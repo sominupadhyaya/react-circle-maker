@@ -1,8 +1,11 @@
+import { MouseEvent } from "react";
+import './styles/App.css'
 const App = () =>{
-
+  const handleCircle = (e : MouseEvent<HTMLDivElement>) =>{
+    console.log(e);
+  }
   return (
-    <div>
-      <h1>Hello World!</h1>
+    <div className = "App" onClick={handleCircle}>
     </div>
   )
 }
