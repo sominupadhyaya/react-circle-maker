@@ -14,7 +14,6 @@ const App = () =>{
   }
   return (
     <div className = "App" onClick={handleCircle}>
-      <div className="circle"></div>
     </div>
   )
 }
