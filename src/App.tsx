@@ -14,6 +14,20 @@ const App = () =>{
   }
   return (
     <div className = "App" onClick={handleCircle}>
+      {
+        points.map(point =>{
+          return(
+            <div>
+            <div className="point" style={{
+              top : point.y + "px",
+              left : point.x + "px"
+            }}>
+              <div className="circle"></div>
+              </div>
+            </div>
+          )
+        })
+      }
     </div>
   )
 }
