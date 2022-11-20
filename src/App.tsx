@@ -8,9 +8,9 @@ type Point = {
 const App = () =>{
   const [points, setPoints] = useState<Point[]>([])
   const handleCircle = (e : MouseEvent<HTMLDivElement>) =>{
-
+    
     const {pageX , pageY} = e
-    console.log(pageX , pageY);
+    setPoints([...points,{x : pageX, y: pageY}])
   }
   return (
     <div className = "App" onClick={handleCircle}>
