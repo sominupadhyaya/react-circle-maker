@@ -12,7 +12,13 @@ const App = () =>{
     const {pageX , pageY} = e
     setPoints([...points,{x : pageX, y: pageY}])
   }
-  return (
+  const undoPoints = () =>{
+    const newPoints = [...points]
+    newPoints.pop()
+    setPoints(newPoints)
+  }
+  return (<>
+    <button onClick={undoPoints}>Undo</button>
     <div className = "App" onClick={handleCircle}>
       {
         points.map(point =>{
@@ -29,6 +35,7 @@ const App = () =>{
         })
       }
     </div>
+  </>
   )
 }
 
