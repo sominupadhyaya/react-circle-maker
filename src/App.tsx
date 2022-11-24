@@ -7,6 +7,7 @@ type Point = {
 }
 const App = () =>{
   const [points, setPoints] = useState<Point[]>([])
+  const [popped, setPopped] = useState<Point[]>([])
   const handleCircle = (e : MouseEvent<HTMLDivElement>) =>{
     
     const {pageX , pageY} = e
@@ -14,11 +15,23 @@ const App = () =>{
   }
   const undoPoints = () =>{
     const newPoints = [...points]
-    newPoints.pop()
+    const poppedPoint = newPoints.pop()
+    if(!poppedPoint) return
+    setPopped([...popped, poppedPoint])
     setPoints(newPoints)
+  }
+  const redoPoints = () =>{
+    const newPopped = [...popped]
+    const newPoints = [...points]
+    const poppedPoints = newPopped.pop()
+    if(!poppedPoints) return
+    newPoints.push(poppedPoints) 
+    setPopped(newPopped)
+    setPoints(newPoints) 
   }
   return (<>
     <button onClick={undoPoints}>Undo</button>
+    <button onClick={redoPoints}>Redo</button>
     <div className = "App" onClick={handleCircle}>
       {
         points.map(point =>{
