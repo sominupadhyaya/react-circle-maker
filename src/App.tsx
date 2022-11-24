@@ -31,7 +31,7 @@ const App = () =>{
   }
   return (<>
     <button onClick={undoPoints}>Undo</button>
-    <button onClick={redoPoints}>Redo</button>
+    <button disabled={popped.length === 0} onClick={redoPoints}>Redo</button>
     <div className = "App" onClick={handleCircle}>
       {
         points.map(point =>{
